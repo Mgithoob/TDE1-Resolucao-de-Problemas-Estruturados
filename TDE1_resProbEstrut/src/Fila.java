@@ -1,9 +1,8 @@
 public class Fila {
     private int inicio;
     private int fim;
-    private int MAX;
 
-    int dados[];
+    private int[] dados;
 
     public Fila(int tamanho) {
         dados = new int[tamanho];
@@ -11,8 +10,40 @@ public class Fila {
         fim = 0;
     }
 
-    public inserir(){
+    // Insere objeto no começo da fila
+    public void inserir(int elemento){
 
+        if (inicio <= 0) dados[fim] = elemento;
+        else if (inicio == fim) {
+            // exceção fila cheia
+        } else if ((fim + 1) > dados.length){
+            dados[fim] = elemento;
+            fim = 0;
+        }
+        /*
+        dados[fim] = elemento;
+        fim++;
+        */
+
+        // TODO: PENSAR EM WRAP!
+    }
+
+    // Retira objeto do fim da fila
+    public int retirar(){
+        int elemento;
+        elemento = dados[inicio];
+
+        return inicio;
+
+        //TODO: VER WRAP!
+    }
+
+    public boolean cheia(){
+        return false;
+    }
+
+    public boolean vazia(){
+        return false;
     }
 
 
