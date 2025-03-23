@@ -1,11 +1,10 @@
 public class Pilha {
     private int topo;
-    private int dados[];
-    private int MAX;
+    private int[] dados;
 
-    public Pilha(int MAX)
+    public Pilha(int tamanho)
     {
-        dados = new int[MAX];
+        dados = new int[tamanho];
         topo = 0;
     }
 
@@ -14,30 +13,40 @@ public class Pilha {
     // Adicionar ao topo da pilha
     public void adicionar(int novo_item) {
         // inserir apenas se não exceder tamanho da stack
-        if (!cheia()){
-            dados[topo + 1] = novo_item;
-            topo += 1;
-        }
-        else throw Exception;
+        try{
+            if (!cheia()){
+                dados[topo + 1] = novo_item;
+                topo += 1;
+            }
+            else throw new PilhaCheiaException();
             // TODO: essa exceção
             // Exceção -> msg + imprimir stack
             // System.out.println("A pilha já está cheia!");
+        } catch (PilhaCheiaException e){
+
+        }
+
 
     }
 
     // Retirar obj no topo da pilha
     // Deve retornar int em pilha[topo]
     public int retirar() {
-        if (dados[topo] != 0){
-            int elemento = dados[topo];
-            topo--;
-            return elemento;
-        }
-        else throw Exception;
+        try{
+            if (dados[topo] != 0){
+                int elemento = dados[topo];
+                topo--;
+                return elemento;
+            }
+            else throw new PilhaVaziaException();
             // TODO: essa exceção
             // Exceção ≥ msg + imprimir stack
             // System.out.println("A pilha está vazia!");
+        } catch (PilhaVaziaException e){
 
+            // Fluxo do programa será interrompido de qualquer forma.
+            return -1;
+        }
     }
 
     private boolean vazia(){
@@ -58,4 +67,3 @@ public class Pilha {
         }
     }
 }
-
