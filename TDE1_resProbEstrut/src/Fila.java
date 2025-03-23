@@ -39,12 +39,13 @@ public class Fila {
     }
 
     public boolean cheia(){
-        return false;
+        if ((inicio + 1 == fim) || (inicio - 1 == fim)) return true;
+        else return false;
     }
 
     public boolean vazia(){
-        return false;
+        if ((inicio == fim)) return true;
+        else return false;
     }
-
 
 }
