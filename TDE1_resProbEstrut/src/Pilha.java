@@ -15,7 +15,7 @@ public class Pilha {
             if(!vazia()) return dados[topo];
             else throw new PilhaVaziaException();
         } catch (PilhaVaziaException e) {
-            // TODO: lidar com exceção
+            System.exit(1);
             return -1;
         }
 
@@ -34,7 +34,7 @@ public class Pilha {
             // Exceção -> msg + imprimir stack
             // System.out.println("A pilha já está cheia!");
         } catch (PilhaCheiaException e){
-
+            System.exit(1);
         }
     }
 
@@ -52,8 +52,7 @@ public class Pilha {
             // Exceção ≥ msg + imprimir stack
             // System.out.println("A pilha está vazia!");
         } catch (PilhaVaziaException e){
-
-            // Fluxo do programa será interrompido de qualquer forma.
+            System.exit(1);
             return -1;
         }
     }
