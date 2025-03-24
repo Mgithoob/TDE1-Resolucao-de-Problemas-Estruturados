@@ -1,14 +1,25 @@
 public class Pilha {
     private int topo;
     private int[] dados;
+    private final int MAX;
 
-    public Pilha(int tamanho)
+    public Pilha(int MAX)
     {
-        dados = new int[tamanho];
+        this.MAX = MAX;
+        dados = new int[MAX];
         topo = 0;
     }
 
-    public int getTopo() { return topo; }
+    public int olharTopo() {
+        try {
+            if(!vazia()) return dados[topo];
+            else throw new PilhaVaziaException();
+        } catch (PilhaVaziaException e) {
+            // TODO: lidar com exceção
+            return -1;
+        }
+
+    }
 
     // Adicionar ao topo da pilha
     public void adicionar(int novo_item) {
@@ -25,8 +36,6 @@ public class Pilha {
         } catch (PilhaCheiaException e){
 
         }
-
-
     }
 
     // Retirar obj no topo da pilha
@@ -55,7 +64,7 @@ public class Pilha {
     }
 
     private boolean cheia(){
-        if (topo < dados.length - 1) return false;
+        if (topo < MAX - 1) return false;
         else return true;
     }
 
@@ -67,3 +76,4 @@ public class Pilha {
         }
     }
 }
+
