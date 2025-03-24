@@ -31,6 +31,7 @@ public class Fila {
                 fim++;
             }
         } catch (FilaCheiaException e) {
+            System.exit(1);
 
         }
 
@@ -51,7 +52,7 @@ public class Fila {
                 return elemento;
             }
         } catch (FilaVaziaException e){
-            // TODO: lidar com exceção
+            System.exit(1);
             return -1;
         }
     }
