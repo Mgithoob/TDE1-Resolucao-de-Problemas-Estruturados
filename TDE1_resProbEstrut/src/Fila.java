@@ -13,29 +13,39 @@ public class Fila {
     // Insere objeto no começo da fila
     public void inserir(int elemento){
 
-        if (inicio <= 0) dados[fim] = elemento;
-        else if (inicio == fim) {
+        // caso para inicio
+        if (fim <= 0) dados[fim] = elemento;
+        else if (cheia()) {
             // exceção fila cheia
-        } else if ((fim + 1) > dados.length){
+            throw new FilaCheiaException();
+            // TODO: catch
+        // wrap
+        } else if ((fim + 1) >= dados.length){
             dados[fim] = elemento;
             fim = 0;
+        } else {
+            // caso geral
+            dados[fim] = elemento;
+            fim++;
         }
-        /*
-        dados[fim] = elemento;
-        fim++;
-        */
-
-        // TODO: PENSAR EM WRAP!
     }
 
     // Retira objeto do fim da fila
     public int retirar(){
         int elemento;
-        elemento = dados[inicio];
 
-        return inicio;
+        if (vazia()) {
+            throw new FilaVaziaException();
+            return -1;
+        } else {
+            elemento = dados[inicio];
 
-        //TODO: VER WRAP!
+            // wrap
+            if ( (inicio + 1) >= dados.length ) inicio = 0;
+            else inicio++;
+
+            return elemento;
+        }
     }
 
     public boolean cheia(){
